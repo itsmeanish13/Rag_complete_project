@@ -1,0 +1,37 @@
+# Required
+groq>=0.9.0
+
+
+python-dotenv>=0.19.0     # for loading .env files (optional, but recommended)
+
+# PDF support — install at least one:
+pdfplumber>=0.10.0   # recommended (layout-aware)
+pypdf>=4.0.0         # fallback (lighter weight)
+
+
+
+
+
+# ── Core ──────────────────────────────────────────────────────────────────────
+
+gtts>=2.5.0          # Google Text-to-Speech (free, requires internet)
+pyaudio>=0.2.14      # Microphone capture
+
+
+
+# ── System audio players (install separately, OS-specific) ────────────────────
+# macOS:   afplay is built-in — nothing to install
+# Linux:   sudo apt install mpg123          (or ffmpeg for ffplay)
+# Windows: Windows Media Player is built-in — nothing to install
+
+
+
+
+
+# Web framework
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9    # required for file uploads
+
+
+

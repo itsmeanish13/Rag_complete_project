@@ -1,0 +1,73 @@
+# ============================================================
+# docker-compose.yml — RAG Voice Agent
+# ============================================================
+#
+# docker-compose lets you define and run your container with
+# a single command instead of a long  docker run  command.
+#
+# Run everything:        docker-compose up
+# Run in background:     docker-compose up -d
+# Stop everything:       docker-compose down
+# Rebuild after changes: docker-compose up --build
+# ============================================================
+
+version: "3.9"          # compose file format version
+
+services:
+
+  # ── Our FastAPI app ────────────────────────────────────────
+  rag-agent:
+
+    # Build the image from the Dockerfile in the current folder
+    build: .
+
+    # Name the running container (optional but handy)
+    container_name: rag-voice-agent
+
+    # ── Port mapping ─────────────────────────────────────────
+    # Format:  "HOST_PORT:CONTAINER_PORT"
+    # This maps port 8000 on your machine to port 8000 inside
+    # the container. Visit http://localhost:8000 in your browser.
+    ports:
+      - "8000:8000"
+
+    # ── Environment variables ────────────────────────────────
+    # The app reads GROQ_API_KEY with os.environ.get(...)
+    # Option A: hardcode here (only for local dev, never commit)
+    #   - GROQ_API_KEY=gsk_your_key_here
+    #
+    # Option B: load from a .env file (recommended — see below)
+    #   Create a file called .env in this folder with:
+    #     GROQ_API_KEY=gsk_your_key_here
+    #   Then uncomment the env_file line below.
+    #
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}   # reads from your shell env
+    # env_file:
+    #   - .env                         # OR load from .env file
+
+    # ── Volume mount ─────────────────────────────────────────
+    # Mounts a folder from your machine into the container.
+    # Format:  "./host_folder:./container_folder"
+    #
+    # Why: Any files uploaded through the web UI are saved
+    # inside the container. Without a volume they disappear
+    # when the container stops. With a volume they persist.
+    volumes:
+      - ./uploads:/app/uploads
+
+    # ── Restart policy ───────────────────────────────────────
+    # unless-stopped: restart automatically if it crashes,
+    #                 but not if you manually docker-compose down
+    restart: unless-stopped
+
+    # ── Health check ─────────────────────────────────────────
+    # Docker will periodically call /api/status to check if
+    # the app is alive. Shows as "healthy" or "unhealthy" in
+    # docker ps output.
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/status"]
+      interval: 30s     # check every 30 seconds
+      timeout: 10s      # fail if no response in 10 seconds
+      retries: 3        # mark unhealthy after 3 failures
+      start_period: 15s # give the app 15s to start before checking

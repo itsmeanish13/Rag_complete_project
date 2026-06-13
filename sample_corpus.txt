@@ -1,0 +1,47 @@
+A Brief History of Machine Learning
+
+Chapter 1: Early Foundations
+
+The roots of machine learning trace back to Alan Turing's 1950 paper "Computing Machinery and Intelligence," in which he asked: "Can machines think?" Turing proposed an imitation game—later called the Turing Test—as a practical measure of machine intelligence. A machine passes the test if a human interrogator cannot reliably distinguish it from a human through text conversation.
+
+In 1952, Arthur Samuel wrote a checkers-playing program for the IBM 701 that improved its play by experience. Samuel coined the term "machine learning" in 1959, defining it as the ability of computers to learn without being explicitly programmed.
+
+Chapter 2: The Perceptron and Early Neural Networks
+
+Frank Rosenblatt introduced the Perceptron in 1957 at the Cornell Aeronautical Laboratory. The Perceptron was an early artificial neural network capable of binary classification tasks. It learned by adjusting weights based on errors during training. Rosenblatt's work generated enormous excitement—and equally enormous criticism when Marvin Minsky and Seymour Papert published "Perceptrons" in 1969, proving that single-layer perceptrons could not solve non-linearly separable problems like XOR.
+
+This critique triggered the first "AI Winter"—a period of reduced research funding and pessimism from roughly 1969 to 1980.
+
+Chapter 3: The Rise of Backpropagation
+
+The publication of backpropagation by Rumelhart, Hinton, and Williams in 1986 revived interest in neural networks. Backpropagation allowed efficient training of multi-layer networks by propagating gradient signals backwards through the network.
+
+During the 1990s, Support Vector Machines (SVMs) emerged as a powerful alternative to neural networks for classification tasks. SVMs, developed by Vladimir Vapnik and colleagues at Bell Labs, found optimal decision boundaries by maximizing the margin between classes.
+
+Chapter 4: The Deep Learning Revolution
+
+The modern deep learning era began in earnest in 2006, when Geoffrey Hinton and colleagues showed that deep belief networks could be pre-trained layer by layer using an unsupervised algorithm. This helped address the vanishing gradient problem that had plagued deep networks.
+
+The landmark moment came in 2012 when AlexNet, a deep convolutional neural network designed by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton, won the ImageNet Large Scale Visual Recognition Challenge by a large margin—achieving a top-5 error rate of 15.3% compared to 26.2% for the runner-up.
+
+Chapter 5: Transformers and Large Language Models
+
+In 2017, the paper "Attention Is All You Need" by Vaswani et al. from Google Brain introduced the Transformer architecture. Unlike recurrent networks, Transformers process sequences in parallel using self-attention mechanisms, allowing them to capture long-range dependencies efficiently.
+
+The Transformer became the foundation for BERT (2018) from Google and GPT (2018) from OpenAI. These pre-trained language models showed that large-scale unsupervised training followed by fine-tuning could achieve state-of-the-art results across many NLP benchmarks.
+
+GPT-3 (2020), with 175 billion parameters, demonstrated remarkable few-shot learning capabilities—performing tasks from just a few examples in the prompt with no weight updates.
+
+Chapter 6: Reinforcement Learning from Human Feedback
+
+A key development in aligning language models with human intent was Reinforcement Learning from Human Feedback (RLHF). This technique, central to InstructGPT and later ChatGPT, uses human preference data to train a reward model, which then guides the language model's outputs toward more helpful and harmless responses via PPO (Proximal Policy Optimization).
+
+Constitutional AI (CAI), introduced by Anthropic, extends this approach by having the model critique and revise its own outputs according to a set of principles, reducing reliance on human labelers for the harmful-content filtering stage.
+
+Chapter 7: Current Challenges
+
+Modern machine learning faces several open challenges:
+
+Alignment: ensuring AI systems reliably do what humans intend, even in novel situations. Interpretability: understanding why models produce particular outputs. Robustness: models remain brittle to distribution shift and adversarial inputs. Data efficiency: humans learn from far fewer examples than current models require. Compute costs: training frontier models now requires hundreds of millions of dollars of compute.
+
+Researchers are actively exploring mechanistic interpretability, sparse autoencoders, and formal verification methods to address these issues.
